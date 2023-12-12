@@ -1114,6 +1114,49 @@ Then $y\in\partial A$ and by definition, $\forall\delta>0$,
 But $d(x,y)=\varepsilon^{*}<\varepsilon$. Consider then the ball $B(y,\frac{\hat{\varepsilon}}{2})$ where $\hat{\varepsilon}=\min\{\varepsilon^{*},\varepsilon-\varepsilon^{*}\}$. Then the $B(y,\hat{\varepsilon})\subseteq B(x,\varepsilon)$ but $B(y, \hat{\varepsilon})\cap A\neq\emptyset$ which is a \textbf{\underline{contradiction}} as $B(x,\varepsilon)\subseteq A^{c}$. We cannot simultaneously intersect with $A$ and lie entirely within $A^{c}$.
 \end{multicols}
 
+Recall:
+\begin{itemize}[label=\empty]
+    \item ($X$, $d$) \& $A\subseteq X$ we associate with $A$, a set $\overline{A}$ known as the closure of $A$, where
+    \subitem $\overline{A}:=A\cup\partial A$ ($\partial A$ is the set of all boundary points of $A$)
+    \subitem $\overline{A}$ is closed. ($F\subseteq X$ is closed $\iff\partial F\subseteq F$.)
+\end{itemize}
+
+\begin{itemize}
+    \item[Example:] In the metric space $(\mathbb{R}^{n}, d_{2})$, where $\mathbb{R}^{n}$ is Euclidean $n$-space and $d_{2}(x,y)=\sqrt{\sum^{n}_{i=1}|x_{i}-y_{i}|^{2}}$,
+    \subitem $\overline{B(x,r)}=\overline{B}(x,r)$. In other words, the closure of the open ball centred at $x$ of radius $r$ is the closed ball.
+    \item[Note:] This is not true in general. $\exists (x,d)$ such that $\overline{B(x,r)}\neq\overline{B}(x,r)$
+\end{itemize}
+
+\begin{multicols}{2}
+    \begin{tikzpicture}[scale=2]
+        \draw[-](-1,0)--(1,0);
+        \draw[-](0,-1)--(0,1);
+        \draw[dashed, radius=1.2](0,0) circle;
+        \draw[->](0,0)--(1.15,0.2);
+        \draw[-](-1.4,-1.4)--(1.4,1.4);
+        \node[left] at (1,0.3){$r$};
+        \draw[dashed, radius=0.3](0.8485281374,0.8485281374) circle;
+        \node[right] at (1.4,1.4){$y$};
+        \node[below] at (0.1,0.01){$x$};
+    \end{tikzpicture}
+
+    \begin{itemize}
+        \item[Observation:] No point in $B(x,r)=\{y\in\mathbb{R}^{n}:d_{2}(x,y)<r\}$ is a boundary point; indeed they are all interior points.
+        \item[Recall:] $\partial A$, $A^{o}$ \& $A^{e}$ are all pairwise disjoint.
+        
+    \end{itemize}
+    Sufficient to show
+        \begin{align*}
+            \boxed{\partial B(x,r)=\{y\in\mathbb{R}^{n}:d_{2}(x,y)=r\}\subseteq \overline{B}(x,r):=C}
+        \end{align*}
+    Straight forward to show that any $y\in\mathbb{R}^{n}$ for which $d_{2}(x,y)>r$ in in the exterior of $B(x,r)$.
+\end{multicols}
+We know that $\underline{r}\in Ly$ can be written in the form $\underline{r}=x+\lambda(y-x)$ where $\lambda\in\mathbb{R}$. If $\lambda\in(-1,1)$ then $\underline{r}\in B(x,r)$ \& $\lambda\notin(-1,1)$ then $\underline{r}\notin B(x,r)$ \& further $\underline{r}(1)=\underline{x}+1(\underline{y}-\underline{x})=\underline{y}$.
+
+Let $\varepsilon>0$ be given. Choose $\delta:=\min\{\frac{\varepsilon}{2},\frac{r}{2}\}$. Then $\underline{r}(\delta)=\underline{x}+\delta(\underline{y}-\underline{x})\in B(x,r)$ \& $\underline{r}(1+\delta)=\underline{x}+(1+\delta)(\underline{y}-\underline{x})\in B(x,r)^{c}$. From this we can deduce (by alternating $\delta$ slightly) that $B(y.\delta)\cap B(x,r)\neq\emptyset$ and $B(y,\delta)\cap B(x,r)^{c}\neq\emptyset$ which together define a boundary point.
+\begin{itemize}
+    \item[Note:] $\boxed{\overline{B}(x,r)=B(x,r)\cup C.}$ 
+\end{itemize}
 
 
 TBC...
