@@ -1157,7 +1157,189 @@ Let $\varepsilon>0$ be given. Choose $\delta:=\min\{\frac{\varepsilon}{2},\frac{
 \begin{itemize}
     \item[Note:] $\boxed{\overline{B}(x,r)=B(x,r)\cup C.}$ 
 \end{itemize}
+\newpage
+What we want to do is mimic closing $(0,1)$ in as `efficient' a way as possible. (claim is to form the closure).
+\begin{itemize}
+    \item[Fact:] If $A\subseteq X$ is closed then $A=\overline{A}$ and if $A=\overline{A}$ then $A$ is closed.
+    \subitem ($A$ is closed $\iff A=\overline{A}$)
+    \item[Proof:] $A=\overline{A}$, $\overline{A}$ is closed (Lecture 6) $\implies A$ is closed.
+    \subitem $A$ is closed $\implies\partial A\subseteq A\implies\overline{A}=A=A\cup\partial A$
+\end{itemize}
+What do we mean by `efficient'? Suppose $A\subseteq F\subseteq\overline{A}$ and $F$ are closed, then we want to show that $F=\overline{A}$.
+\begin{itemize}
+    \item[Idea:] The limiting properties of $\{0,1\}$ in relation to $(0,1)$ \& $[0,1]$ 
+\end{itemize}
+\begin{multicols}{2}
+\begin{tikzpicture}[scale=5]
+    \draw[-](0.05,0)--(0.95,0);
+    \draw[radius=0.05](0,0) circle;
+    \draw[radius=0.05](1,0) circle;
+    \node[above] at (0,0.05){$0$};
+    \node[above] at (1.0,0.05){$1$};
+    \draw[{Arc Barb[]}-{Arc Barb[]}](-0.2,-0.1)--(0.2,-0.1);
+    \draw[{Arc Barb[]}-{Arc Barb[]}](0.8,-0.1)--(1.2,-0.1);
+    \draw[fill, radius=0.02](0,-0.1) circle;
+    \draw[fill, radius=0.02](1,-0.1) circle;
+    \node[below] at (1.1,-0.1){$\varepsilon$};
+    \draw[{Arc Barb[]}-{Arc Barb[]}](-0.1,-0.2)--(0.1,-0.2);
+    \draw[{Arc Barb[]}-{Arc Barb[]}](0.9,-0.2)--(1.1,-0.2);
+    \draw[fill, radius=0.02](0,-0.2) circle;
+    \draw[fill, radius=0.02](1,-0.2) circle;
+    \draw[{Arc Barb[]}-{Arc Barb[]}](-0.05,-0.3)--(0.05,-0.3);
+    \draw[{Arc Barb[]}-{Arc Barb[]}](0.95,-0.3)--(1.05,-0.3);
+    \draw[fill, radius=0.02](0,-0.3) circle;
+    \draw[fill, radius=0.02](1,-0.3) circle;
+    \draw[dotted, thick](1,-0.35)--(1,-0.4);
+    \draw[dotted, thick](0,-0.35)--(0,-0.4);
+\end{tikzpicture}
 
+\begin{align*}
+    \varepsilon_{n}=\frac{1}{n},\,\,n\in\mathbb{N}
+\end{align*}
+Can construct a sequence $(x_{n})_{n=1}^{\infty}$ such that $x_{n}\in(0,1)$ where $x_{n}\neq0$ and $x_{n}\neq1$ \& $d(0,x_{n})<\frac{1}{n}\to0$ as $n\to\infty$.
+\end{multicols}
+Let ($X,d$) be a metric space \& $A\subseteq X$. A \textbf{limit point}, $y\in X$, is an element of $X$ for which $(B(y,\varepsilon)\setminus\{y\})\cap A\neq\emptyset$ for any $\varepsilon>0$.
+
+The \textbf{derived set} of $A$, denoted by $A'$, is the set of $\underline{\text{all}}$ limit points of $A$.
+\begin{itemize}
+    \item[Note:] $A'\cap\partial A\neq\emptyset$ is possible,
+    \subitem an element of $A'$ is not always a boundary point and vice-versa
+    \subitem Eg: $(0,1)$: $\partial A=\{0,1\}$ but $A'=[0,1]$.
+    \subitem Take any $y\in(0,1)$ \& any $\varepsilon>0$, ($y-\varepsilon$, $y+\varepsilon)\supset\{y'\}$ where $y'\neq y$.
+    \item[$\triangle$ Fact:] $\overline{A}=A\cup A'$. $\square$ Fact: $F\subseteq X$ \& $F$ is closed. Then $F$ contains all its limit points.
+    \item[Proof of $\square$:] Suppose $F$ is closed and $\exists y$ such that $y\in F'$ but $y\notin F$
+    \subitem Claim: $y\in\partial F$ \& this is a contradiction as $\partial F\subseteq F$ is closed by definition.
+    \subitem Take $\varepsilon>0$ \& consider $B(y,\varepsilon)$:
+    \begin{enumerate}[label=\roman*)]
+        \item $\exists \underbrace{y'\in F}_{y'\neq y}$ such that $y'\in B(y,\varepsilon)$ (limit point)
+        \item $B(y,\varepsilon)\ni y$ \& $y\notin F$ we have $B(y,\varepsilon)\cap F^{c}\neq\emptyset$.
+    \end{enumerate}
+    So i) \& ii) $\implies y$ is a boundary point of $F\implies y\in F$.
+    \item[Proof of $\triangle$:] If $A$ is closed $\implies A=\overline{A}\implies A'\subseteq A=\overline{A}$ by $\square$.
+    \subitem Suppose $A$ is not closed. We know $\overline{A}=A\cup\partial A$. If $A'=\emptyset$ then $A'\subseteq\overline{A}$.
+    \subitem Assume that $A'=\emptyset$ \& further we can assume that $y\in A'$ is not in $A$ wlog. 
+    \subitem If $y\in A'$ \& $y\in A$ then $y\in\overline{A}$ as $A\subseteq\overline{A}$. Thus $y\in\partial A$.
+    \subitem So for any $\varepsilon>0$ $B(y,\varepsilon)\cap A\neq\emptyset$ \& because $y\notin A\implies\exists y'\neq y$ which is in $A$ \& $B(y,\varepsilon)$.
+    \subitem $\therefore y$ is a limit point.
+\end{itemize}
+Thus $A'\subseteq\overline{A}$ \& hence $A\cup A'\subseteq\overline{A}$. As $A$ is not closed $\exists y\in A'$ such that $y\notin A$. \hspace*{\fill}\\
+Take $\varepsilon>0$ $B(y,\varepsilon)\cap A\neq\emptyset$ (limit point) \& $B(y, \varepsilon)\cap A^{c}\ni y\therefore y$ is a boundary point $\therefore\overline{A}\subseteq A\cup A'$.
+
+Thus for
+\begin{align*}
+    A\text{ is closed}&\iff\partial A\subseteq A \text{(definition of closed)}\\
+    &\iff A^{c}\text{ is open}\\
+    &\iff A^{c}\cap\partial(A^{c})=\emptyset\text{ (definition of open)}\\
+    &\iff A^{c}\cap\partial A=\emptyset\text{ as }\partial(A^{c})=\partial A\\
+    &\iff \text{for any }x\in A^{c}\exists\varepsilon>0\text{ such that }B(x,\varepsilon)\subseteq A^{c}\\
+    &\iff A=\overline{A}\\
+    &\iff A\supseteq A'
+\end{align*}
+$\overline{A}=A\cup\partial A=A\cup A'$ for any $A\subseteq X$.\footnote{no reason for $A'=\partial A$. They could be different.}
+
+Another version of closure; topological version: Let $(X,d)$ be a metric space \& $A\subseteq X$. Then
+\begin{align*}
+    \overline{A}=\bigcap_{\mathcal{F}}F
+\end{align*}
+where $\mathcal{F}$ is the collection of all closed supersets of $A$.
+
+Let $A\subseteq X$. If $A\subseteq F\subset\overline{A}$ where $F$ is closed, then $F$ contains all its limit points but not all of $A$'s limit points. Suppose that $y\in A'$ but $y\notin F$. By definition, for any $\varepsilon>0$ $B(y,\varepsilon)\cap A\neq\emptyset$ (definition of a limit point) and contains $x\neq y$. But $x\in A\subseteq F\implies y\in F'$ but $F$ is closed so $F'\subseteq F\implies y\in F$.
+
+\subsection{Density}
+\begin{itemize}
+    \item[Motivation:] (rationals) $\mathbb{Q}\subseteq\mathbb{R}$ (reals)
+    \subitem Take any $x\in\mathbb{R}$ and any $\varepsilon>0$, $\exists\frac{p}{q}\in\mathbb{Q}$ such that $|x-p/q|<\varepsilon$ ($\overline{\mathbb{Q}}=\mathbb{R}$)
+\end{itemize}
+Let $(X,d)$ be a metric space \& $A\subseteq X$. The $A$ is said to be \textbf{dense} in $X\iff\overline{A}=X$. That is, for any $x\in X$ \& any $\varepsilon>0,\,\,\exists\alpha\in A$ such that $d(x,\alpha)<\varepsilon$.
+
+\subsection{Open \& Closed in Sub-Spaces}
+\begin{itemize}
+    \item[Key Fact:] open \& closed do not behave `well' in sub-spaces.
+    \item[For example:] $A\subseteq X$. Consider $A$ is a sub-space, a set $\Omega\subseteq A$ could be open in $A$ (as a sub-space) but not open in $X$.
+\end{itemize}
+We can characterise the open \& closed sets in a sub-space;
+\begin{itemize}
+    \item[-] The open sets in $A$ as a  sub-space are all the sets of the form $A\cap\Omega$ where $\Omega\in T_{d}$ (the open sets in $X$).
+    \item[-] The closed sets in $A$ as a sub-space are all sets of the form $A\cap F$ where $F^{c}\in T_{d}$.
+\end{itemize}
+
+\newpage
+\section{Sequences \& Convergence (in abstract metric spaces)}
+A \textbf{Sequence} in $(X,d)$ is an element of $X^{\mathbb{N}}$, $x=\underbrace{(x_{1}, x_{2}, x_{3}, \dots, x_{n}, \dots)}_{\text{countable}}$ where $x_{i}\in X$. The notation we use for a sequence is $(x_{n})_{n\in\mathbb{N}}$ or $(x_{n})_{n=1}^{\infty}$. The order is important, it is not a set and nothing is stopping $x_{i}=x_{j}$ for some $i\neq j$.
+\begin{itemize}
+    \item[Question:] The main issue with sequences is that of convergence. Do we have similar convergence in $(X,d)$?
+    \subitem Real Analysis (Calculus): Take $(x_{n})_{n=1}^{\infty}$ of real numbers. Then $(x_{n})_{n=1}^{\infty}$ converges to $x\in\mathbb{R}$.
+    \subitem for any $\varepsilon>0$ (a tolerance) $\exists N=N(\varepsilon)>0$ (make sure that any $x_{n}$ where $n>N(\varepsilon)$ is close [within the desired tolerance to $x$]) such that $|x_{n}-x|<\varepsilon\,\,\forall n>N$.
+\end{itemize}
+Let $(x_{n})_{n=1}^{\infty}$ in $(X,d)$. Then $(x_{n})$ converges to $x\in X\iff\forall\varepsilon>0\exists N=N(\varepsilon)>0$ such that $d(x_{n},x)<\varepsilon\forall n>N$.
+
+If this is the case, we write; $x_{n}\to x$ and we call $x$ the limit of the sequence.
+
+If no such $x$ exists then we say that $(x_{n})^{\infty}_{n=1}$ is divergent.
+\begin{itemize}
+    \item[Note:] The definition can be written readily in terms of open balls;
+    \subitem $x_{n}\to x$ as $n\to\infty\iff\forall\varepsilon>0,\,\,\exists N>0$ such that $x_{n}\in B(x,\varepsilon)\,\forall n>N$.
+    \footnote{Note that in this we assume that $x$ exists.}
+\end{itemize}
+\begin{center}
+\begin{tikzpicture}[scale=1.4]
+    \draw plot[smooth cycle, tension=0.8] coordinates {(2,2) (1.5,0) (2,-2) (0,-1.5) (-2,-2) (-1.5,0) (-2,2) (0,1.5)};
+    \node[left] at (-2,2){$(X,d)$};
+    \draw[fill, radius=0.03](-1.2,-1) circle;
+    \node[above] at (-1.2,-1){$x_{1}$};
+    \draw[fill, radius=0.03](-0.9,-1.3) circle;
+    \node[right] at (-0.9,-1.3){$x_{4}$};
+    \draw[fill, radius=0.03](-0.8,1.2) circle;
+    \node[below] at (-0.8,1.2){$x_{2}$};
+    \draw[fill, radius=0.03](1.5,1.6) circle;
+    \node[below] at (1.5,1.6){$x_{3}$};
+    \draw[dotted, radius=1](0,0) circle;
+    \draw[fill, radius=0.03](0,0) circle;
+    \draw[fill, radius=0.03](0.7,-0.5) circle;
+    \node[below] at (0,0){$x$};
+    \draw[<->](0,0)--(0.7071067811865,0.7071067811865);
+    \node[above] at (0.3,0.3){$\varepsilon$};
+    \draw plot [smooth, tension=0.6] coordinates {(0.1,-0.1) (0.3,-0.1) (0,0.3) (-0.1,0.5) (-0.4,0) (-0.6,-0.6) (0,-0.4) (0.6,-0.4)};
+    \draw[->](2.5,0) to [bend left=45] (0.7,-0.5);
+    \node[above] at (2.5,0){$x_{N+1}$};
+    \draw[dotted, radius=0.6, yscale=0.5, red](0,0) circle;
+\end{tikzpicture}
+\end{center}
+A very useful equivalence: $x_{n}\to x$ as $n\to\infty\iff \underbrace{D(x_{n}, x)\to0\text{ as }n\to\infty}_{y_{n}=d(x_{n},x)\in\mathbb{R}. (y_{1}, y_{2}, \dots)\in\mathbb{R}^{\mathbb{N}}\text{ can use calculus.}}$
+
+Example: In $\mathbb{R}^{k}$ for $k\in\mathbb{N}$ with any of the metrics $d_{1}$, $d_{2}$ or $d_{\infty}$ convergence is equivalent to simultaneous component wise convergence.
+\begin{align*}
+    \underline{x}_{n}&\in\mathbb{R}^{k}\,(n\in\mathbb{N})\\
+    \underline{x}_{n}\to x\text{ as }n\to\infty&\iff x_{j}^{(n)}\to x_{i}\text{ as }n\to\infty\text{ for each }i\in\{1,2,\dots,k\}.\\
+    \text{where }\underline{x}_{n}=\Big{(}x_{1}^{(n)}, x_{2}^{(n)}, \dots, x_{k}^{(n)}\Big{)}&\text{ and }\underline{x}=(x_{1}, x_{2}, \dots, x_{k})\text{ where }(n)\text{ is nothing but an index or label.}
+\end{align*}
+Prove in $(\mathbb{R}^{k}, d_{\infty})$:
+\begin{align*}
+    d_{\infty}(\underline{x}, \underline{y})=\max\Big{\{}|x_{i}-y_{i}|:i\in\{1, 2, \dots, k\}\Big{\}}
+\end{align*}
+\begin{enumerate}[label=\roman*)]
+    \item Suppose that $\underline{x}_{n}\to\underline{x}$ as $n\to\infty$. Let $\varepsilon>0$ be given. (Start with what you know.) Then $\exists N>0$ such that $d_{\infty}(\underline{x}, \underline{y})<\varepsilon\,\forall n>N$. That is $\max_{Ki\leq k}|x_{i}^{(n)}-x_{i}|<\varepsilon\,\forall n>N$. \& so $|x_{i}^{(n)}-x_{i}|<\varepsilon\,\forall n>N$ and any $i\in\{1, 2, \dots, k\}$. But this means the real sequence $\Big{(}x_{i}^{(n)}\Big{)}_{n=1}^{\infty}$ converges to $x_{i}$.
+    
+    \item For each $i\in\{1, 2, \dots, k\}$, the sequence $\Big{(}x_{i}^{(n)}\Big{)}_{n=1}^{\infty}$ converges to $x_{i}$ as $n\to\infty$. We want to show that $\underline{x}_{n}\to\underline{x}$ as $n\to\infty$. Let $\varepsilon>0$. Then for any $i\in\{1, 2, \dots, k\}$, $\exists N_{i}>0$ such that $|x_{i}^{(n)}-x_{i}|<\varepsilon\,\forall n>N_{i}$. Let $N_{i}=\max\{N_{1}, N_{2}, \dots, N_{k}\}$. Then $|x_{i}^{(n)}-x_{i}|<\varepsilon\,\forall n>N$ and each $i\in\{1, 2, \dots, k\}$. At each such $n>N$ at least one of the terms $|x_{i}^{(n)}-x_{i}|$ is maximal, but this means that $d_{\infty}(\underline{x}_{n}, \underline{x})<\varepsilon$ for each $n>N$.
+\end{enumerate}
+\begin{center}
+\begin{tikzpicture}[scale=2.5]
+    \node[above, scale=2] at (0,0){$\underline{x}_{1}=x_{1}^{(1)}\,\,\,x_{2}^{(1)}\,\,\,x_{3}^{(1)}\,\,\,\dots\,\,\,x_{k}^{(1)}$};
+    \node[above, scale=2] at (0,-0.6){$\underline{x}_{2}=x_{1}^{(2)}\,\,\,x_{2}^{(2)}\,\,\,x_{3}^{(2)}\,\,\,\dots\,\,\,x_{k}^{(2)}$};
+    \node[above, scale=2] at (0,-1.2){$\underline{x}_{3}=x_{1}^{(3)}\,\,\,x_{2}^{(3)}\,\,\,x_{3}^{(3)}\,\,\,\dots\,\,\,x_{k}^{(3)}$};
+    \draw[->](-0.4,-1.2)--(-0.4,-1.8);
+    \draw[dotted, thick](0.3,-1.2)--(0.3,-1.5);
+    \draw[->, thick](1.4,-1.2)--(1.4,-2.1);
+    \draw[-, thick](0.2,-1.6)--(0.4,-1.6);
+    \draw[-, thick](-0.5,-1.9)--(-0.3,-1.9);
+    \draw[-, thick](1.3,-2.2)--(1.5,-2.2);
+    \draw[-, thick](-0.9,-1.75)--(-1.1,-1.75);
+    \node[left] at (-1.1,-1.75){$N_{1}$};
+    \node[right] at (-0.3,-1.9){$N_{2}$};
+    \node[right] at (0.4,-1.6){$N_{3}$};
+    \node[right] at (1.5,-2.2){$N_{k}$};
+\end{tikzpicture}
+\end{center}
 
 TBC...
 
